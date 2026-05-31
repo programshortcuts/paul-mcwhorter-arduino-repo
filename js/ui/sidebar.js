@@ -1,5 +1,6 @@
 // js/ui/sidebar.js
 import { loadPages, savePages } from "../data/page-storage.js";
+export const sideBarBtn = document.querySelector('#sideBarBtn')
 import { lessonTemplate } from "../templates/lesson-template.js";
 let pages = loadPages();
 let editMode = false;
@@ -12,6 +13,8 @@ export function initSidebar() {
 function loadSidebarPages() {
     const sideBarList = document.querySelector("#sideBarList");
     const mainLandingPage = document.querySelector(".main-landing-page");
+    const active = document.activeElement;
+    const activeIndex = [...document.querySelectorAll('.side-bar a')].indexOf(active);
     sideBarList.innerHTML = "";
     // LOAD DEFAULT PAGE
     if (pages.length === 0) {
@@ -61,21 +64,10 @@ function loadSidebarPages() {
     });
 }
 function initCreatePageButton() {
-
     const createBtn = document.querySelector("#createSidePage");
-
-
-
     createBtn.addEventListener("click", () => {
-
         const title = prompt("Enter page title");
-
-
-
         if (!title) return;
-
-
-
         const newPage = {
 
             id: crypto.randomUUID(),
@@ -87,15 +79,8 @@ function initCreatePageButton() {
                 title
             )
         };
-
-
-
         pages.push(newPage);
-
-
-
         savePages(pages);
-
         loadSidebarPages();
     });
 }

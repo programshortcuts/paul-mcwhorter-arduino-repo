@@ -7,13 +7,18 @@ function initApp() {
     initGloablListeners()
     const allEls_TEMPORARY = pageWrapper.querySelectorAll('*')
     allEls_TEMPORARY.forEach(el => {
-        if(el.hasAttribute('data-autofocus')){
+        if (el.hasAttribute('data-autoload')){
             el.focus()
         }
     })
 }
 
 function initGloablListeners(){
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            console.log('TAB pressed — active element:', document.activeElement)
+        }
+    })
     pageWrapper.addEventListener('keydown', e => {
         initKeyboardNav({
             e,

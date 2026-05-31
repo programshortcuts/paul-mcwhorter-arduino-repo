@@ -16,7 +16,6 @@ function routeKey(e){
     // should i query side-bar a elements here?
     if(zone === 'side-bar'){
         const isHandled = sideBarNav(e)
-        console.log(isHandled)
         if(isHandled) return
     }
 }
