@@ -5,3 +5,6 @@
 .main-landing-page{
     flex-grow: 1;
 }
+.side-bar-btns-container {
+    display: flex;
+}

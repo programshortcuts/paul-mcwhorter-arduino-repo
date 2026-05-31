@@ -20,27 +20,45 @@
         ">
 </head>
 <body>
-    <div class="page-wrapper">
-        <a href="https://programshortcuts.github.io/tyler-tomani-2026/">homepage</a>
+    <div  class="page-wrapper">
         <header class="page-header">
+            <div class="back-links">
+                <a  rel="noopener noreferrer"
+                 data-nav-target="homepageLink" href="https://programshortcuts.github.io/tyler-tomani-2026/">homepage</a>
+            </div>
             <h1>paul-mcwhorter-arduino</h1>
+            <div class="tutorial-dark-mode-container">
+                <a data-nav-target="tutorialImgLink" rel="noopener noreferrer" target="_blank"
+                    href="https://www.youtube.com/watch?v=fJWR7dBuc18&list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP">
+                    <img src="images/paul-mcwhorter-yt-banner.jpg" alt="">
+                </a>
+            </div>
         </header>
         <nav>
             <h2>New Arduino tutorials Playlist</h2>
         </nav>
         <main class="main-content">
             <aside class="side-bar">
+                <svg  data-nav-target="sideBarBtn" id="sideBarBtn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
                 <h2>Playlist</h2>
                 <ul id="sideBarList">
                     <li>1. Example</li>        
                 </ul>
-                <button data-autofocus id="createSidePage">+</button>
-                <button id="editSidebar">-</button>
+                <div class="side-bar-btns-container">
+                    <button data-autofocus data-nav-target="plus-Btn"  id="createSidePage">+</button>
+                    <button data-nav-target="edit-side-bar-btn" id="editSideBarBtn">-</button>
+                </div>
             </aside>
             <div class="main-landing-page">
                 <h3>Inject .side-bar a href html in here within .main-landing-page</h3>
             </div>
         </main>
     </div>
+      
 </body>
 </html>

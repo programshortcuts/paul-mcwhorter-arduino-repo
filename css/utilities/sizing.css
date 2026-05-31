@@ -9,3 +9,7 @@
 .side-bar {
     height: 100vh;
 }
+
+.side-bar-btns-container button{
+    flex-basis: 50%;
+}

@@ -1,4 +1,5 @@
 // pages.js
+
 export let pages = [
     {
         id: "lesson-1",
@@ -6,9 +7,21 @@ export let pages = [
         title: "1. Arduino Introduction",
 
         content: `
-            <section class="lesson-page">
-                <h2>Arduino Introduction</h2>
-            </section>
+<section class="lesson-page">
+    <h2>Arduino Introduction</h2>
+    <article class="step">
+        <div class="step-txt">
+            <h4>1. Go to</h4>
+            <p>
+                <a rel="noopener noreferrer" href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE">https://www.arduino.cc/hc/en-us/articles/</a>
+                to download IDE, get the latest
+            </p>
+        </div>
+        <div class="step-img">
+
+        </div>
+    </article>
+</section>
         `
     }
 ];
