@@ -1,0 +1,7 @@
+/* layout.css */
+.main-content{
+    display: flex;
+}
+.main-landing-page{
+    flex-grow: 1;
+}

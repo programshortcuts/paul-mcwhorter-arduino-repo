@@ -1,0 +1,9 @@
+/* page-header.css */
+.page-header{
+    background-image: url('../../images/paul-mcwhorter-yt-banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: 150%;
+
+}
