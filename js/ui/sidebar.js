@@ -9,6 +9,7 @@ export function initSidebar() {
     initCreatePageButton();
     initEditSidebarButton();
     initSidebarOutsideClick();
+    initSidebarClickHandler()
 }
 function loadSidebarPages() {
     const sideBarList = document.querySelector("#sideBarList");
@@ -107,3 +108,21 @@ function initSidebarOutsideClick() {
     });
 }
 
+function initSidebarClickHandler() {
+    const sideBarList = document.querySelector("#sideBarList");
+    const mainLandingPage = document.querySelector(".main-landing-page");
+
+    sideBarList.addEventListener("click", (e) => {
+        const link = e.target.closest("a");
+        if (!link) return;
+
+        e.preventDefault();
+
+        const index = [...sideBarList.querySelectorAll("a")].indexOf(link);
+
+        const page = pages[index];
+        if (!page) return;
+
+        mainLandingPage.innerHTML = page.content;
+    });
+}
