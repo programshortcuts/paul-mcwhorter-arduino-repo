@@ -1,27 +1,26 @@
-// page-storage.js
-import { pages } from "./pages.js";
+import { defaultPages } from "./pages.js";
 
 const STORAGE_KEY = "sidebar-pages";
 
-export function savePages(data) {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
-
-}
-
 export function loadPages() {
 
-    const storedPages = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY);
 
-    if (storedPages) {
-
-        return JSON.parse(storedPages);
-
+    if (stored) {
+        try {
+            return JSON.parse(stored);
+        } catch (e) {
+            console.warn("Failed to parse pages, resetting.");
+            savePages(defaultPages);
+            return defaultPages;
+        }
     }
 
-    return pages;
+    // first run → seed storage so future edits persist
+    savePages(defaultPages);
+    return defaultPages;
+}
 
+export function savePages(pages) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(pages));
 }

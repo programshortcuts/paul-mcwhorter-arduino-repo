@@ -1,6 +1,6 @@
 // js/data/pages.js
 
-export const pages = [
+export const defaultPages = [
 
     {
         id: "page-1",

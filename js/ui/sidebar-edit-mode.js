@@ -24,3 +24,30 @@ export function initEditButton(renderSidebar) {
         renderSidebar();
     });
 }
+
+// ======================
+// EXIT ON OUTSIDE CLICK
+// ======================
+export function initOutsideClickExit(renderSidebar) {
+    document.addEventListener("click", (e) => {
+        if (!isEditMode()) return;
+        const sidebar = document.querySelector(".side-bar");
+        if (!sidebar.contains(e.target)) {
+            exitEditMode();
+            renderSidebar();
+        }
+    });
+}
+
+// ======================
+// EXIT ON KEY PRESS
+// ======================
+export function initKeyExit({renderSidebar,exitEditMode}) {
+    document.addEventListener("keydown", (e) => {
+        if (!isEditMode()) return;
+        if (e.key === "Escape") {
+            exitEditMode();
+            renderSidebar();
+        }
+    });
+}
