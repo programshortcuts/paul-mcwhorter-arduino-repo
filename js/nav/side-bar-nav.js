@@ -1,8 +1,10 @@
 // nav/side-bar-nav.js
-import { sideBarBtn } from "../ui/sidebar.js"
 let iSideBarLinks = 0;
 
 export function sideBarNav(e) {
+    const sideBarBtn = document.querySelector('#sideBarBtn')
+    const plusBtn = document.querySelector('[data-nav-target="plus-btn"]')
+    const editBtn = document.querySelector('[data-nav-target="edit-side-bar-btn"]')
 
     const key = e.key.toLowerCase();
 
@@ -22,7 +24,12 @@ export function sideBarNav(e) {
     if (currentIndex !== -1) {
         iSideBarLinks = currentIndex;
     }
-
+    if(key === 'p'){
+        plusBtn.focus()
+    }
+    if(key === 'e'){
+        editBtn.focus()
+    }
     if (key === 'f') {
         if (e.target === sideBarBtn) {
             iSideBarLinks = 0

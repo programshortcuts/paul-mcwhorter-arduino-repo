@@ -1,7 +1,7 @@
 // lesson-template.js
 export const lessonTemplate = `
 <section class="lesson-page">
-    <h2>Arduino Introduction</h2>
+    <h2>Lesson Temp</h2>
     <article class="step">
         <div class="step-txt">
             <h4>1. Go to</h4>

@@ -1,27 +1,31 @@
-// pages.js
+// js/data/pages.js
 
-export let pages = [
+export const pages = [
+
     {
-        id: "lesson-1",
+        id: "page-1",
 
-        title: "1. Arduino Introduction",
+        title: "Arduino Intro",
 
         content: `
-<section class="lesson-page">
-    <h2>Arduino Introduction</h2>
-    <article class="step">
-        <div class="step-txt">
-            <h4>1. Go to</h4>
-            <p>
-                <a rel="noopener noreferrer" href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE">https://www.arduino.cc/hc/en-us/articles/</a>
-                to download IDE, get the latest
-            </p>
-        </div>
-        <div class="step-img">
+            <section>
+                <h2>Arduino Intro</h2>
+                <p>Hello from page 1</p>
+            </section>
+        `
+    },
 
-        </div>
-    </article>
-</section>
+    {
+        id: "page-2",
+
+        title: "Blink LED",
+
+        content: `
+            <section>
+                <h2>Blink LED</h2>
+                <p>Hello from page 2</p>
+            </section>
         `
     }
+
 ];

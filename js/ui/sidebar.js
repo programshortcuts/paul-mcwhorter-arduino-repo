@@ -1,30 +1,25 @@
 // js/ui/sidebar.js
-import { loadPages, savePages } from "../data/page-storage.js";
-export const sideBarBtn = document.querySelector('#sideBarBtn')
+
+import { pages } from "../data/pages.js";
 import { lessonTemplate } from "../templates/lesson-template.js";
-let pages = loadPages();
-let editMode = false;
+
+import { toggleEditMode, isEditMode, exitEditMode } from "./sidebar-edit-mode.js";
 export function initSidebar() {
-    loadSidebarPages();
+    renderSidebar();
+    initSidebarClickHandler();
     initCreatePageButton();
-    initEditSidebarButton();
-    initSidebarOutsideClick();
-    initSidebarClickHandler()
+    initEditButton(renderSidebar);
+    initOutsideClickExit();
+    initKeyExit();
 }
-function loadSidebarPages() {
+// ======================
+// RENDER SIDEBAR
+// ======================
+function renderSidebar() {
+
     const sideBarList = document.querySelector("#sideBarList");
-    const mainLandingPage = document.querySelector(".main-landing-page");
-    const active = document.activeElement;
-    const activeIndex = [...document.querySelectorAll('.side-bar a')].indexOf(active);
+
     sideBarList.innerHTML = "";
-    // LOAD DEFAULT PAGE
-    if (pages.length === 0) {
-        mainLandingPage.innerHTML = lessonTemplate;
-
-    } else {
-
-        mainLandingPage.innerHTML = pages[0].content;
-    }
 
 
 
@@ -32,97 +27,216 @@ function loadSidebarPages() {
 
         const li = document.createElement("li");
 
-
-
         const link = document.createElement("a");
+
+
 
         link.href = "#";
 
         link.textContent = page.title;
 
+        link.dataset.pageId = page.id;
 
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            mainLandingPage.innerHTML = page.content;
-        });
+
+
         li.append(link);
-        if (editMode) {
+
+
+
+        // =========================
+        // DELETE BUTTON (EDIT MODE ONLY)
+        // =========================
+
+        if (isEditMode()) {
+
             const deleteBtn = document.createElement("button");
+
             deleteBtn.textContent = "-";
+
             deleteBtn.classList.add("delete-page-btn");
-            deleteBtn.addEventListener("click", () => {
-                const confirmed = confirm(
-                    `Are you sure you want to delete "${page.title}" ? `
-                );
-                if (!confirmed) return;
-                pages = pages.filter(p => p.id !== page.id);
-                savePages(pages);
-                loadSidebarPages();
+
+
+
+            deleteBtn.addEventListener("click", (e) => {
+
+                e.stopPropagation();
+
+
+
+                const index = pages.findIndex(p => p.id === page.id);
+
+
+
+                if (index !== -1) {
+
+                    pages.splice(index, 1);
+
+                }
+
+
+
+                renderSidebar();
+
+
+
+                if (pages.length > 0) {
+
+                    loadPage(pages[0]);
+
+                } else {
+
+                    clearPage();
+
+                }
+
             });
+
+
+
             li.append(deleteBtn);
+
         }
+
+
+
         sideBarList.append(li);
+
     });
+
 }
+// ======================
+// CLICK SIDEBAR LINKS
+// ======================
+function initSidebarClickHandler() {
+
+    const sideBarList = document.querySelector("#sideBarList");
+
+
+
+    sideBarList.addEventListener("click", (e) => {
+
+        const link = e.target.closest("a");
+
+        if (!link) return;
+
+
+
+        e.preventDefault();
+
+
+
+        const pageId = link.dataset.pageId;
+
+
+
+        const page = pages.find(page => page.id === pageId);
+
+
+
+        if (!page) return;
+
+
+
+        loadPage(page);
+
+    });
+
+}
+// ======================
+// LOAD PAGE
+// ======================
+function loadPage(page) {
+
+    const mainLandingPage = document.querySelector(".main-landing-page");
+
+
+
+    mainLandingPage.innerHTML = page.content;
+
+}
+// ======================
+// CLEAR PAGE
+function clearPage() {
+    const mainLandingPage = document.querySelector(".main-landing-page");
+    mainLandingPage.innerHTML = lessonTemplate;
+}
+// ======================
+// CREATE PAGE BUTTON
+// ======================
 function initCreatePageButton() {
     const createBtn = document.querySelector("#createSidePage");
+
+
+
     createBtn.addEventListener("click", () => {
+
         const title = prompt("Enter page title");
+
         if (!title) return;
+
+
+
         const newPage = {
 
             id: crypto.randomUUID(),
 
-            title,
+            title: title,
 
-            content: lessonTemplate.replace(
-                "New Lesson",
-                title
-            )
+            content: lessonTemplate.replace("New Lesson", title)
+
         };
+
+
+
         pages.push(newPage);
-        savePages(pages);
-        loadSidebarPages();
-    });
-}
-function initEditSidebarButton() {
-    const editBtn = document.querySelector("#editSideBarBtn");
-    editBtn.addEventListener("click", () => {
 
-        editMode = !editMode;
 
-        loadSidebarPages();
+
+        renderSidebar();
+
+
+
+        loadPage(newPage);
+
     });
+
 }
-function initSidebarOutsideClick() {
+
+// ======================
+// EDIT MODE BUTTON
+// ======================
+
+// function initEditButton(renderSidebar) {
+//     const editBtn = document.querySelector("#editSideBarBtn");
+//     editBtn.addEventListener("click", (e) => {
+//         e.stopPropagation();
+//         toggleEditMode();
+//         renderSidebar();
+//     });
+// }
+
+// ======================
+// EXIT ON OUTSIDE CLICK
+// ======================
+function initOutsideClickExit() {
     document.addEventListener("click", (e) => {
-        if (!editMode) return;
+        if (!isEditMode()) return;
         const sidebar = document.querySelector(".side-bar");
-        const clickedInsideSidebar = sidebar.contains(e.target);
-        if (!clickedInsideSidebar) {
-
-            editMode = false;
-
-            loadSidebarPages();
+        if (!sidebar.contains(e.target)) {
+            exitEditMode();
+            renderSidebar();
         }
     });
 }
-
-function initSidebarClickHandler() {
-    const sideBarList = document.querySelector("#sideBarList");
-    const mainLandingPage = document.querySelector(".main-landing-page");
-
-    sideBarList.addEventListener("click", (e) => {
-        const link = e.target.closest("a");
-        if (!link) return;
-
-        e.preventDefault();
-
-        const index = [...sideBarList.querySelectorAll("a")].indexOf(link);
-
-        const page = pages[index];
-        if (!page) return;
-
-        mainLandingPage.innerHTML = page.content;
+// ======================
+// EXIT ON KEY PRESS
+// ======================
+function initKeyExit() {
+    document.addEventListener("keydown", (e) => {
+        if (!isEditMode()) return;
+        if (e.key === "Escape") {
+            exitEditMode();
+            renderSidebar();
+        }
     });
 }
