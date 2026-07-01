@@ -3,5 +3,7 @@
 .vid:active,
 .vid:focus {
     background-color:rgb(43, 76, 226);
+    padding: 1%;
+    margin:  1%;
     color: whitesmoke;
 }
