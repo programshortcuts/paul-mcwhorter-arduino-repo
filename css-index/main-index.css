@@ -3,6 +3,7 @@
 @import url('components/page-header.css');
 /* utilities */
 @import url('utilities/borders-index.css');
+@import url('utilities/effect-index.css');
 @import url('utilities/layout-index.css');
 @import url('utilities/sizing-index.css');
 @import url('utilities/text-index.css');

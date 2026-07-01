@@ -1,0 +1,7 @@
+/* text.css */
+
+.vid:active,
+.vid:focus {
+    background-color:rgb(43, 76, 226);
+    color: whitesmoke;
+}
