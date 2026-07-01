@@ -13,7 +13,7 @@
 .side-bar-btns-container button{
     flex-basis: 50%;
 }
-.vid img {
+ img {
     max-height: 100px;
     max-width: 100px;
 }
