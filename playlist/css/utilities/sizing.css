@@ -13,3 +13,18 @@
 .side-bar-btns-container button{
     flex-basis: 50%;
 }
+#sideBarList a,
+#sideBarList li{
+    
+}
+#sideBarList li{
+    position: relative;
+}
+#sideBarList button{
+    /* width: 1%; */
+    position: absolute;
+    transform: scaleX(3);
+    right: 0;
+    top: 0;
+    border: 1px solid red;
+}
