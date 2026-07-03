@@ -1,4 +1,6 @@
 // keyboard.js
+export const mainLandingPage = document.querySelector(".main-landing-page");
+import { letterFocusIndex } from "../../../js-index/letter-focus-index.js";
 import { getFocusZone } from "./focus-zones.js"
 import { sideBarNav } from "./side-bar-nav.js"
 const navState = {
@@ -17,5 +19,10 @@ function routeKey(e){
     if(zone === 'side-bar'){
         const isHandled = sideBarNav(e)
         if(isHandled) return
+    } else if(zone == 'main-landing-page') {
+
+
+    } else {
+        letterFocusIndex({e})
     }
 }

@@ -1,7 +1,7 @@
 // js/ui/sidebar.js
 // LOAD DEFAULT PAGE WITH THIS INDEX *********************************************
 let default_sidebar_index = 0
-export const mainLandingPage = document.querySelector(".main-landing-page");
+import { mainLandingPage } from "../nav/keyboard-nav.js";
 import { loadPages, savePages } from "../data/page-storage.js";
 import { lessonTemplate } from "../templates/lesson-template.js";
 import {
@@ -93,7 +93,7 @@ function renderSidebar() {
 
     if(!document.eventsAdded){
 
-        console.log(pages[default_sidebar_index])
+        console.log(pages[default_sidebar_index].file)
         loadPage(pages[default_sidebar_index])
         
     }
