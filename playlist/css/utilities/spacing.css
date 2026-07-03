@@ -16,5 +16,9 @@
 #sideBarList a,
 #sideBarList li {
     display: block;
-    /* padding: 5%; */
+}
+
+.step {
+    padding: 2%;
+    margin: 2%;
 }
