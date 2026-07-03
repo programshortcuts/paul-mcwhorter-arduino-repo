@@ -18,6 +18,9 @@ function updateSteps() {
                 handleImgSizes({e})
             }
         });
+        step.addEventListener('focusin', e => {
+            scrollCenter(step)
+        });
     })
 }
 
@@ -33,18 +36,15 @@ export function mainLandingNav(e) {
     if(!isNaN(key)){
         const intKey = parseInt(key)
         steps[intKey -1].focus()
-        scrollCenter(steps[iStep])
     }
     if (key === "f") {
         iStep = (iStep + 1) % steps.length;
         steps[iStep]?.focus();
-        scrollCenter(steps[iStep])
         return true;
     }
     if (key === "a") {
         iStep = (iStep - 1 + steps.length) % steps.length;
         steps[iStep]?.focus();
-        scrollCenter(steps[iStep])
         return true;
     }
     if (key == 's') {

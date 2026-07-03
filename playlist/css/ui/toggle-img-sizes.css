@@ -13,6 +13,6 @@ img{
     border: none !important;
     position: absolute;
     z-index: 2;
-    transform: scale(4);
-    left: 34%;
+    transform: scale(1.5);
+    left: 24%;
 }
