@@ -1,0 +1,14 @@
+.step {
+    position: relative;
+    transition: all 1s;
+}
+.enlarge {
+    position: absolute;
+    z-index: 2;
+    transform: scale(4);
+    left: 34%;
+    /* transition: left 1s; */
+    /* transform 0.6s ease,  */
+    transition: left 4.6s ease;
+                     
+}

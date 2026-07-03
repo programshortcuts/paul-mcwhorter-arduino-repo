@@ -1,6 +1,10 @@
 /* main.css */
+@import url('responsive.css');
 /* components */
 @import url('../../css-index/components/page-header.css');
+/* ui */
+@import url('ui/toggle-img-sizes.css');
+
 /* utilities */
 @import url('utilities/borders.css');
 @import url('utilities/effects.css');

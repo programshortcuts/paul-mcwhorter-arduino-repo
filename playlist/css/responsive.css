@@ -1,0 +1,6 @@
+@media screen and (max-width: 720px){
+    .enlarge {
+        transform: scale(3.02) !important;
+        left: 10% !important;
+    }
+}

@@ -1,6 +1,7 @@
 // nav/main-landing-nav.js
 import { changeTutorialLink, tutorialLink } from "../ui/change-tutorial-link.js";
 import { mainLandingPage } from "./keyboard-nav.js";
+import { handleImgSizes } from "../ui/toggle-img-sizes.js";
 let iStep = -1;
 let steps = [];
 
@@ -13,7 +14,7 @@ function updateSteps() {
         step.addEventListener('keydown', e => {
             let key = e.key.toLowerCase()
             if(key === 'enter'){
-                
+                handleImgSizes({e})
                 
                 
             }
