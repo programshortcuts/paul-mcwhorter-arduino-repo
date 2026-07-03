@@ -1,6 +1,6 @@
 // nav/side-bar-nav.js
 let iSideBarLinks = 0;
-
+import { mainLandingPage } from "./keyboard-nav.js";
 export function sideBarNav(e) {
     const sideBarBtn = document.querySelector('#sideBarBtn')
     const plusBtn = document.querySelector('[data-nav-target="plus-btn"]')
@@ -47,7 +47,14 @@ export function sideBarNav(e) {
         sideBarLinks[iSideBarLinks]?.focus();
         return true;
     }
+    
+    if (key == 'm') {
+        console.log('here')
+        console.log(mainLandingPage)
+        mainLandingPage.focus()
+        scrollTo(0,0)
 
+    }
     if (key == 's') {
         if (e.target != sideBarBtn) {
             sideBarBtn.focus()
