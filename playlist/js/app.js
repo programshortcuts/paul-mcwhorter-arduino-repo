@@ -2,6 +2,8 @@
 import { initSidebar } from "./ui/sidebar.js";
 import { initKeyboardNav } from "./nav/keyboard-nav.js";
 import { loadPages } from "./data/page-storage.js";
+import { changeTutorialLink } from "./ui/change-tutorial-link.js";
+
 const pageWrapper = document.querySelector('.page-wrapper')
 function initApp() {
     initSidebar();
@@ -25,7 +27,7 @@ function initGloablListeners(){
             e,
             container: pageWrapper
         })
-        
+        changeTutorialLink({e})        
     });
 }
 

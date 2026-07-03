@@ -1,17 +1,20 @@
 // nav/main-landing-nav.js
+import { changeTutorialLink, tutorialLink } from "../ui/change-tutorial-link.js";
 import { mainLandingPage } from "./keyboard-nav.js";
-import { tutorialLink } from "../ui/change-tutorial-link.js";
-
 let iStep = -1;
 let steps = [];
 
 function updateSteps() {
     steps = [...mainLandingPage.querySelectorAll(".step")];
     steps.forEach(step => {
+        if(step.hasAttribute('data-auto-focus')){
+            step.focus()
+        }
         step.addEventListener('keydown', e => {
             let key = e.key.toLowerCase()
             if(key === 'enter'){
-                console.log(step)
+                
+                
                 
             }
         });
