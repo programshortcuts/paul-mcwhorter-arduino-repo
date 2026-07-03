@@ -1,11 +1,21 @@
 // nav/main-landing-nav.js
 import { mainLandingPage } from "./keyboard-nav.js";
+import { tutorialLink } from "../ui/change-tutorial-link.js";
 
 let iStep = -1;
 let steps = [];
 
 function updateSteps() {
     steps = [...mainLandingPage.querySelectorAll(".step")];
+    steps.forEach(step => {
+        step.addEventListener('keydown', e => {
+            let key = e.key.toLowerCase()
+            if(key === 'enter'){
+                console.log(step)
+                
+            }
+        });
+    })
 }
 
 export function refreshSteps() {
@@ -40,7 +50,7 @@ export function mainLandingNav(e) {
         }
     }
     if (key == 't') {
-        const tutorialLink = document.querySelector('#tutorialLink')
+        
         console.log(tutorialLink)
         tutorialLink.focus()
     }

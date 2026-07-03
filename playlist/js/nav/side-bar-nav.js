@@ -1,5 +1,6 @@
 // nav/side-bar-nav.js
 let iSideBarLinks = 0;
+import { tutorialLink } from "../ui/change-tutorial-link.js";
 import { mainLandingPage } from "./keyboard-nav.js";
 export function sideBarNav(e) {
     const sideBarBtn = document.querySelector('#sideBarBtn')
@@ -64,7 +65,7 @@ export function sideBarNav(e) {
         }
     }
     if (key == 't') {
-        const tutorialLink = document.querySelector('#tutorialLink')
+        
         console.log(tutorialLink)
         tutorialLink.focus()
     }
