@@ -10,13 +10,12 @@ function updateSteps() {
     steps.forEach(step => {
         if(step.hasAttribute('data-auto-focus')){
             step.focus()
+            step.scrollIntoView({behavior:'smooth', inline:'center', block:'center'})
         }
         step.addEventListener('keydown', e => {
             let key = e.key.toLowerCase()
             if(key === 'enter'){
                 handleImgSizes({e})
-                
-                
             }
         });
     })
@@ -38,6 +37,7 @@ export function mainLandingNav(e) {
     if (key === "f") {
         iStep = (iStep + 1) % steps.length;
         steps[iStep]?.focus();
+        scrollCenter(steps[iStep])
         return true;
     }
     if (key === "a") {
@@ -59,4 +59,10 @@ export function mainLandingNav(e) {
         tutorialLink.focus()
     }
     return false;
+}
+function scrollCenter(el){
+    el.scrollIntoView({ 
+        behavior: 'smooth', 
+        inline: 'nearest', 
+        block: 'center' })
 }
