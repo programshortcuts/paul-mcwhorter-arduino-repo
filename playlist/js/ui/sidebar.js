@@ -12,6 +12,8 @@ import {
     initKeyExit
 } from "./sidebar-edit-mode.js";
 let pages = loadPages();
+console.log("pages:", pages);
+
 export function initSidebar() {
     renderSidebar();
     initSidebarClickHandler();
@@ -25,7 +27,7 @@ export function initSidebar() {
 // ======================
 function renderSidebar() {
     const sideBarList = document.querySelector("#sideBarList");
-    sideBarList.innerHTML += "";
+    sideBarList.innerHTML = "";
     pages.forEach(page => {
         const li = document.createElement("li");
         const link = document.createElement("a");
@@ -90,8 +92,7 @@ function initSidebarClickHandler() {
         const link = e.target.closest("a");
         if (!link) return;
         e.preventDefault();
-        console.log(link)
-        const pageId = link.dataset.pageId;
+        console.log("CLICKED LINK DATA:", link.dataset.pageId);        const pageId = link.dataset.pageId;
         const page = pages.find(p => p.id === pageId);
         if (!page) return;
         loadPage(page);
@@ -100,9 +101,14 @@ function initSidebarClickHandler() {
 // ======================
 // LOAD PAGE
 // ======================
-function loadPage(page) {
+async function loadPage(page) {
+
     const mainLandingPage = document.querySelector(".main-landing-page");
-    mainLandingPage.innerHTML = page ? page.content : lessonTemplate;
+
+    const html = await fetch(page.file)
+        .then(r => r.text());
+
+    mainLandingPage.innerHTML = html;
 }
 // ======================
 // CREATE PAGE

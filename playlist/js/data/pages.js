@@ -1,31 +1,20 @@
 // js/data/pages.js
 
 export const defaultPages = [
-
     {
-        id: "page-1",
-
-        title: "Arduino Intro",
-
-        content: `
-            <section>
-                <h2>Arduino Intro</h2>
-                <p>Hello from page 1</p>
-            </section>
-        `
+        id: "page-0",
+        title: "Download Install",
+        file: "../static-sidebar-links/00/00.html"
     },
 
     {
+        id: "page-1",
+        title: "Arduino Intro",
+        file: "sections/01-01/01-01.html"
+    },
+    {
         id: "page-2",
-
         title: "Blink LED",
-
-        content: `
-            <section>
-                <h2>Blink LED</h2>
-                <p>Hello from page 2</p>
-            </section>
-        `
+        file: "sections/01-02/01-02.html"
     }
-
 ];
