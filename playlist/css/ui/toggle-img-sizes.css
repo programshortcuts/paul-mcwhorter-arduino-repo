@@ -1,6 +1,10 @@
 .step {
     position: relative;
-    transition: all 1s;
+}
+video,
+img{
+    transition: all .3s;
+
 }
 .enlarge {
     position: absolute;
