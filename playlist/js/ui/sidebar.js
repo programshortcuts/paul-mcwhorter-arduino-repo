@@ -1,4 +1,6 @@
 // js/ui/sidebar.js
+// LOAD DEFAULT PAGE WITH THIS INDEX *********************************************
+let default_sidebar_index = 0
 export const mainLandingPage = document.querySelector(".main-landing-page");
 import { loadPages, savePages } from "../data/page-storage.js";
 import { lessonTemplate } from "../templates/lesson-template.js";
@@ -91,8 +93,9 @@ function renderSidebar() {
 
     if(!document.eventsAdded){
 
-        console.log()
-        loadPage(pages[2])
+        console.log(pages[default_sidebar_index])
+        loadPage(pages[default_sidebar_index])
+        
     }
     document.eventsAdded = true
     sideBarList.addEventListener("click", (e) => {
