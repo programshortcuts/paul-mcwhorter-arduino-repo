@@ -25,7 +25,7 @@ export function initSidebar() {
 // ======================
 function renderSidebar() {
     const sideBarList = document.querySelector("#sideBarList");
-    sideBarList.innerHTML = "";
+    sideBarList.innerHTML += "";
     pages.forEach(page => {
         const li = document.createElement("li");
         const link = document.createElement("a");
@@ -57,7 +57,7 @@ function renderSidebar() {
                 renderSidebar();
 
                 const links = document.querySelectorAll("#sideBarList a");
-
+                
                 if (links.length === 0) {
                     loadPage(null);
                     return;
@@ -90,6 +90,7 @@ function initSidebarClickHandler() {
         const link = e.target.closest("a");
         if (!link) return;
         e.preventDefault();
+        console.log(link)
         const pageId = link.dataset.pageId;
         const page = pages.find(p => p.id === pageId);
         if (!page) return;
