@@ -1,4 +1,5 @@
 // js/ui/sidebar.js
+export const mainLandingPage = document.querySelector(".main-landing-page");
 import { loadPages, savePages } from "../data/page-storage.js";
 import { lessonTemplate } from "../templates/lesson-template.js";
 import {
@@ -12,7 +13,6 @@ import {
     initKeyExit
 } from "./sidebar-edit-mode.js";
 let pages = loadPages();
-console.log("pages:", pages);
 
 export function initSidebar() {
     renderSidebar();
@@ -86,15 +86,27 @@ function renderSidebar() {
 // ======================
 // CLICK SIDEBAR LINKS
 // ======================
-function initSidebarClickHandler() {
+ function initSidebarClickHandler() {
     const sideBarList = document.querySelector("#sideBarList");
+
+    if(!document.eventsAdded){
+
+        console.log()
+        loadPage(pages[2])
+    }
+    document.eventsAdded = true
     sideBarList.addEventListener("click", (e) => {
         const link = e.target.closest("a");
         if (!link) return;
         e.preventDefault();
-        console.log("CLICKED LINK DATA:", link.dataset.pageId);        const pageId = link.dataset.pageId;
+
+        const pageId = link.dataset.pageId;
         const page = pages.find(p => p.id === pageId);
-        if (!page) return;
+        
+        if (!page){
+            return;
+        } 
+
         loadPage(page);
     });
 }
@@ -103,8 +115,7 @@ function initSidebarClickHandler() {
 // ======================
 async function loadPage(page) {
 
-    const mainLandingPage = document.querySelector(".main-landing-page");
-
+ 
     const html = await fetch(page.file)
         .then(r => r.text());
 

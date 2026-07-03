@@ -48,19 +48,18 @@ export function sideBarNav(e) {
         return true;
     }
 
-    // if (e.target.closest('.side-bar-btns-container')) {
-    //     iSideBarLinks = 0
-    //     sideBarLinks[iSideBarLinks].focus()
-    //     return true
-    // }
     if (key == 's') {
         if (e.target != sideBarBtn) {
-            console.log(sideBarBtn)
             sideBarBtn.focus()
             return true
         } else {
             // lastClickedSideBarLink
         }
+    }
+    if (key == 't') {
+        const tutorialLink = document.querySelector('#tutorialLink')
+        console.log(tutorialLink)
+        tutorialLink.focus()
     }
     return false;
 }

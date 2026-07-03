@@ -1,6 +1,7 @@
 // app.js
 import { initSidebar } from "./ui/sidebar.js";
 import { initKeyboardNav } from "./nav/keyboard-nav.js";
+import { loadPages } from "./data/page-storage.js";
 const pageWrapper = document.querySelector('.page-wrapper')
 function initApp() {
     initSidebar();
@@ -16,7 +17,7 @@ function initApp() {
 function initGloablListeners(){
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
-            console.log('TAB pressed — active element:', document.activeElement)
+            // console.log('TAB pressed — active element:', document.activeElement)
         }
     })
     pageWrapper.addEventListener('keydown', e => {
