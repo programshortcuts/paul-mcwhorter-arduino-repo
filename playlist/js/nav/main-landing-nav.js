@@ -1,33 +1,37 @@
-// nav/side-bar-nav.js
-let iSideBarLinks = 0;
+// nav/main-landing-nav.js
+import { mainLandingPage } from "./keyboard-nav.js";
 
+let iStep = -1;
+let steps = [];
+
+function updateSteps() {
+    steps = [...mainLandingPage.querySelectorAll(".step")];
+}
+
+export function refreshSteps() {
+    updateSteps();
+    iStep = -1;
+}
 export function mainLandingNav(e) {
     const key = e.key.toLowerCase();
 
-    // if (key === 'tab') return false;
+    // always safe if DOM changed
+    if (!steps.length) updateSteps();
 
-    if(key === 'p'){
-        plusBtn.focus()
-    }
-    if(key === 'e'){
-        editBtn.focus()
-    }
-    if (key === 'f') {
-        // if (e.target === sideBarBtn) {
-        //     iSideBarLinks = 0
-        // } else {
-        //     iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length;
-        // }
-        // sideBarLinks[iSideBarLinks]?.focus();
+    if (!steps.length) return false;
+
+    if (key === "f") {
+        iStep = (iStep + 1) % steps.length;
+        steps[iStep]?.focus();
         return true;
     }
-    if (key === 'a') {
-        // iSideBarLinks =
-        //     (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length;
 
-        // sideBarLinks[iSideBarLinks]?.focus();
+    if (key === "a") {
+        iStep = (iStep - 1 + steps.length) % steps.length;
+        steps[iStep]?.focus();
         return true;
     }
+
 
     if (key == 's') {
         if (e.target != sideBarBtn) {
