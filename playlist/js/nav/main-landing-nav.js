@@ -33,6 +33,7 @@ export function mainLandingNav(e) {
     if(!isNaN(key)){
         const intKey = parseInt(key)
         steps[intKey -1].focus()
+        scrollCenter(steps[iStep])
     }
     if (key === "f") {
         iStep = (iStep + 1) % steps.length;
@@ -43,6 +44,7 @@ export function mainLandingNav(e) {
     if (key === "a") {
         iStep = (iStep - 1 + steps.length) % steps.length;
         steps[iStep]?.focus();
+        scrollCenter(steps[iStep])
         return true;
     }
     if (key == 's') {
@@ -63,6 +65,6 @@ export function mainLandingNav(e) {
 function scrollCenter(el){
     el.scrollIntoView({ 
         behavior: 'smooth', 
-        inline: 'nearest', 
+        inline: 'start',
         block: 'center' })
 }
